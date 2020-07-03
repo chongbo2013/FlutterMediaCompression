@@ -22,7 +22,8 @@ class PlayerVideoAndPopPageState extends State<PlayerVideoAndPopPage> {
         VideoPlayerController.file(File(widget.path));
     _videoPlayerController.addListener(() {
       if (startedPlaying && !_videoPlayerController.value.isPlaying) {
-         _videoPlayerController.play();
+//           _videoPlayerController.initialize();
+        _videoPlayerController.play();
       }
     });
   }

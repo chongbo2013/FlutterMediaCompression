@@ -1,8 +1,8 @@
 name: MediaCompression
-description: A new flutter plugin project.
+description: A picture/video compression plugin for Flutter.
 version: 0.0.1
-author:
-homepage:
+author: xuferris@gmail.com
+homepage: https://github.com/chongbo2013/FlutterMediaCompression
 
 environment:
   sdk: ">=2.7.0 <3.0.0"
