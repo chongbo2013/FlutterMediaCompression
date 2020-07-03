@@ -2,9 +2,12 @@
 
 # flutter video or image compress
 
-Generate a new path by compressed video or image. Easy to deal with compressed video or images. 
-Android image compression using luban,video compression using Mediacodec.
-IOS image compression using luban,video compression using AVAssetExportSession.
+Generate a new path by compressed video or image. 
+Easy to deal with compressed video or images. 
+Android image compression using luban
+video compression using Mediacodec.
+IOS image compression using luban
+video compression using AVAssetExportSession.
 
 <p align="left">
   <a href="https://pub.dartlang.org/packages/MediaCompression"><img alt="pub version" src="https://img.shields.io/pub/v/MediaCompression.svg"></a>
