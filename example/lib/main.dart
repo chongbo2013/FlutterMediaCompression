@@ -8,7 +8,7 @@ import 'dart:async';
 import 'package:flutter/services.dart';
 import 'package:MediaCompression/MediaCompression.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:multi_image_picker/multi_image_picker.dart';
+
 
 import 'DateUtils.dart';
 
@@ -50,44 +50,16 @@ class _MyAppState extends State<MyApp> {
     });
   }
 
-  var data = List();
+
   String resultFinal = '结果';
   String resultPath;
 
   String resultVideoPath;
   Future<void> loadAssets() async {
-    List<Asset> resultList = List<Asset>();
-    String error = 'No Error Dectected';
-    int countSize = 1;
-    try {
-      resultList = await MultiImagePicker.pickImages(
-        maxImages: countSize,
-        enableCamera: true,
-        cupertinoOptions: CupertinoOptions(takePhotoIcon: "chat"),
-        materialOptions: MaterialOptions(
-          actionBarColor: "#abcdef",
-          actionBarTitle: "Example App",
-          allViewTitle: "All Photos",
-          useDetailsView: false,
-          selectCircleStrokeColor: "#000000",
-        ),
-      );
 
-      // If the widget was removed from the tree while the asynchronous platform
-      // message was in flight, we want to discard the reply rather than calling
-      // setState to update our non-existent appearance.
-      if (!mounted) return;
-
-      data.clear();
-      data.addAll(resultList);
-
-      String curTime = DateUtils.currentTimeMillisString();
-      File file = await FileUtils.getUserLocalMediasDirectory('$curTime.jpg');
-
-      bool exists = await file.exists();
-      if (!exists) {
-        await file.create(recursive: true);
-      }
+    final pickedFile = await _picker.getImage(
+      source: ImageSource.gallery
+    );
 
       String curTime2 = DateUtils.currentTimeMillisString();
       File file2 = await FileUtils.getUserLocalMediasDirectory('$curTime2.jpg');
@@ -95,20 +67,14 @@ class _MyAppState extends State<MyApp> {
       if (!exists2) {
         await file2.create(recursive: true);
       }
-
-      ByteData byteData = await data[0].getByteData(quality: 80);
-      File result = await file.writeAsBytes(byteData.buffer.asInt8List(0));
-      if (result != null) {
         String resultFinal2 =
-            await MediaCompression.compressFileHandler(result.path, file2.path);
+            await MediaCompression.compressFileHandler(pickedFile.path, file2.path);
         setState(() {
           resultFinal = resultFinal2;
           resultPath = resultFinal2;
         });
-      }
-    } on Exception catch (e) {
-      error = e.toString();
-    }
+
+
   }
 
   @override
@@ -188,11 +154,6 @@ class _MyAppState extends State<MyApp> {
 
   String curTime2 = DateUtils.currentTimeMillisString();
   File file2 = await FileUtils.getUserLocalMediasDirectory('$curTime2.mp4');
-  bool exists2 = await file2.exists();
-  if (!exists2) {
-    await file2.create(recursive: true);
-  }
-
   String resultFinal2 = await MediaCompression.compressVideoFileHandler(pickFile.path, file2.path);
   return resultFinal2;
 }

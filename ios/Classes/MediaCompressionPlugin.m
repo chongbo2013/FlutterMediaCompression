@@ -12,6 +12,5 @@
 @implementation MediaCompressionPlugin
 + (void)registerWithRegistrar:(NSObject<FlutterPluginRegistrar>*)registrar {
   [SwiftMediaCompressionPlugin registerWithRegistrar:registrar];
-    NSLog(@"");
 }
 @end

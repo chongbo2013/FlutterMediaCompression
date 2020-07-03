@@ -2,7 +2,7 @@
 import 'dart:io';
 import 'package:flutter/services.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:multi_image_picker/multi_image_picker.dart';
+
 import 'package:path_provider/path_provider.dart';
 
 class FileUtils{
