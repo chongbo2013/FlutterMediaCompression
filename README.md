@@ -1,15 +1,36 @@
-# MediaCompression
+<!-- Copyright (c) 2020 ferrisxu -->
 
-A new flutter plugin project.
+# flutter video or image compress
 
-## Getting Started
+Generate a new path by compressed video or image. Easy to deal with compressed video or images. 
+Android image compression using luban,video compression using Mediacodec.
+IOS image compression using luban,video compression using AVAssetExportSession.
 
-This project is a starting point for a Flutter
-[plug-in package](https://flutter.dev/developing-packages/),
-a specialized package that includes platform-specific implementation code for
-Android and/or iOS.
+<p align="left">
+  <a href="https://pub.dartlang.org/packages/MediaCompression"><img alt="pub version" src="https://img.shields.io/pub/v/MediaCompression.svg"></a>
+  <img alt="license" src="https://img.shields.io/github/license/TenkaiRuri/MediaCompression.svg">
+  <img alt="android min Sdk Version" src="https://img.shields.io/badge/android-16-success.svg?logo=android">
+  <img alt="ios min target" src="https://img.shields.io/badge/ios-8-lightgrey.svg?logo=apple">
+</p>
 
-For help getting started with Flutter, view our 
-[online documentation](https://flutter.dev/docs), which offers tutorials, 
-samples, guidance on mobile development, and a full API reference.
-# FlutterMediaCompression
+
+
+## Usage
+
+**Installing**
+add [MediaCompression](https://pub.dartlang.org/packages/MediaCompression) as a dependency in your pubspec.yaml file.
+```yaml
+dependencies:
+  MediaCompression: ^0.01
+```
+
+
+**Get image compression**
+```dart
+String resultPath =await MediaCompression.compressFileHandler(input.path, output.path);
+```
+
+**Get video compression**
+```dart
+ String resultPath =await MediaCompression.compressVideoFileHandler(input.path, output.path);
+```
